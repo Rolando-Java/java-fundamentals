@@ -44,10 +44,12 @@ public class EjemploLocalTime {
         System.out.println("tiempoActual = " + tiempoActual);//03:11:14
 
         //Comparando fechas
-        boolean esAnterior = LocalTime.of(7,29, 59).isBefore(LocalTime.parse("07:30"));
+        boolean esAnterior = LocalTime
+                .of(7,29, 59).isBefore(LocalTime.parse("07:30"));
         System.out.println("esAnterior: " + esAnterior);//true
 
-        boolean esDespues = LocalTime.of(9,45).isAfter(LocalTime.of(8,30));
+        boolean esDespues = LocalTime
+                .of(9,45).isAfter(LocalTime.of(8,30));
         System.out.println("esDespues = " + esDespues);//true
 
         //Descomponiendo los datos del tiempo

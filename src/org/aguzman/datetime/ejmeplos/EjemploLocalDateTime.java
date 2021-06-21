@@ -2,7 +2,6 @@ package org.aguzman.datetime.ejmeplos;
 
 import java.time.*;
 import java.time.format.TextStyle;
-import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 public class EjemploLocalDateTime {
@@ -62,11 +61,13 @@ public class EjemploLocalDateTime {
         Month month = fechaTiempoActual.getMonth();
         System.out.println("Nombre del mes: " + month.name());//JULY
         //TextStyle.FULL: me brinda el nombre completo
-        System.out.println("Mes español: " + month.getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//julio
+        System.out.println("Mes español: " + month
+                .getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//julio
         System.out.println("Dia del mes: " + month.getValue());//7
         //Obteniendo el dia de semana en un idioma en especifico
         DayOfWeek dayOfWeek = fechaTiempoActual.getDayOfWeek();
-        System.out.println("Dia de semana español: " + dayOfWeek.getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//martes
+        System.out.println("Dia de semana español: " + dayOfWeek
+                .getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//martes
         System.out.println("Numero del dia: " + dayOfWeek.getValue());//2
 
         //Convertir un LocalDatetime a LocalDate

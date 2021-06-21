@@ -77,11 +77,13 @@ public class EjemploLocalDate {
         Month month = fechaActual.getMonth();
         System.out.println("Nombre del mes: " + month.name());//JUNE
         //TextStyle.FULL: me brinda el nombre completo
-        System.out.println("Mes español: " + month.getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//junio
+        System.out.println("Mes español: " + month
+                .getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//junio
         System.out.println("Dia del mes: " + month.getValue());//6
         //Obteniendo el dia de semana en un idioma en especifico
         DayOfWeek dayOfWeek = fechaActual.getDayOfWeek();
-        System.out.println("Dia de semana español: " + dayOfWeek.getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//domingo
+        System.out.println("Dia de semana español: " + dayOfWeek
+                .getDisplayName(TextStyle.FULL, new Locale("es", "ES")));//domingo
         System.out.println("Numero del dia: " + dayOfWeek.getValue());//7
 
     }
