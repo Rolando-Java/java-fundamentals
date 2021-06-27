@@ -1,13 +1,9 @@
-package org.aguzman.datetime.ejmeplos;
+package org.aguzman.datetime.ejemplos;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 public class EjemploDateTimeFormatter {
 

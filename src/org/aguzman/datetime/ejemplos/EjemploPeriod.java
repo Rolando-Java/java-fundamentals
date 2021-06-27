@@ -1,4 +1,4 @@
-package org.aguzman.datetime.ejmeplos;
+package org.aguzman.datetime.ejemplos;
 
 import java.time.LocalDate;
 import java.time.Period;
