@@ -4,6 +4,7 @@ import org.aguzman.anotaciones.ejemplo.Init;
 import org.aguzman.anotaciones.ejemplo.JsonAtributo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -44,6 +45,11 @@ public class Persona {
         this.nombre = Arrays.stream(String.valueOf(nombre).trim().split(" "))
                 .map(s -> String.valueOf(s.charAt(0)).toUpperCase().concat(s.substring(1).toLowerCase()))
                 .collect(Collectors.joining(" "));
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + this.nombre + " Precio: " + this.precio + " Fecha: " + DateTimeFormatter.ofPattern("YYYY-MM-dd").format(fecha);
     }
 
 }
