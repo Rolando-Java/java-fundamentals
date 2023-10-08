@@ -1,52 +1,68 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public abstract class Program {
+public class Program {
 
-    public static void main(String... args) {
+    public static void main(String... args) throws Exception {
+
+        // Clase Void en Java
+        /*
+         Reflexión en Java
+         Podríamos hacer uso de la clase Void en la reflexión. De hecho, el tipo de retorno
+         de cualquier método void coincidirá con la variable Void.TYPE que contiene el valor
+         Class<Void> mencionado anteriormente.
+         */
+        Class<Calculator> calculatorClass = Calculator.class;
+        Method[] methods = calculatorClass.getDeclaredMethods();
+
+        // Obteniendo solo los método con el tipo de retorno void
+        System.out.println(
+                Arrays.stream(methods).filter(method -> method.getReturnType() == Void.TYPE)
+                        .toList());
 
         /*
-        A diferencia del metodo Arrays.asList(), el metodo of
-        devuelve una lista de la Interfaz List, Set o Map; en base
-        a un arreglo de elementos
-        -no permite un elemento null
-        -la lista devuelta es completamente inmutable, puesto que no
-        se puede modificar, agregar o eliminar los elementos de la lista
-
-        Se puede combinar con el uso del constructor de cada tipo de lista, para obtener una lista
-        que sea mutable
+         Genéricos en Java
+         Supongamos que queremos hacer uso de una clase genérica, especificando que al hacer uso del
+         método, no queremos devolver nada. Entonces declaramos Void en la clase Genérica.
          */
+        Function<String, Void> function = a -> {
+            System.out.println(a);
+            return null;
+        };
 
-        //lista inmutable
-        List<Integer> listaUno = List.of(1, 3, 2);
-        System.out.println(listaUno);
-
-        //Obteniendo listas mutables haciendo uso del constructor de la clase
-        listaUno = new ArrayList<>(List.of(1, 3, 2));
-        listaUno.set(1, 5);
-        System.out.println(listaUno);
-
-        Set<Integer> listaDos = new HashSet<>(Set.of(1, 3, 5));
-        listaDos.add(4);
-        System.out.println(listaDos);
-
-        listaDos = new TreeSet<>(Set.of(1, 3, 5));
-        System.out.println(listaDos);
-
-        Map<Integer, String> map = new HashMap<>(Map.of(2, "susan", 1, "joel"));
-        System.out.println(map);
-
-        map = new TreeMap<>(Map.of(2, "susan", 1, "joel"));
-        System.out.println(map);
+        Program program = new Program();
+        program.execute(function, "Hola mundo");
 
     }
+
+    public <T,R> R execute(Function<T,R> function, T param) {
+       return function.apply(param);
+    }
+
+}
+
+class Calculator {
+
+    private int result;
+
+    public int add(int number) {
+        return this.result += number;
+    }
+
+    public int sub(int number) {
+        return this.result -= number;
+    }
+
+    public void clear() {
+        this.result = 0;
+    }
+
+    public void print() {
+        System.out.println(this.result);
+    }
+
 
 }
